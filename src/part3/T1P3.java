@@ -1,6 +1,8 @@
 package part3;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
@@ -13,20 +15,23 @@ import java.util.Random;
  */
 public class T1P3 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Random rand = new Random();
+        BufferedWriter wr = null;
         try {
-            File Here = new File("100int.txt");
+            File Here = new File("int100.txt");
             if (!Here.exists()) {
                 Here.createNewFile();
             }
-            //try (FileWriter wr = new FileWriter(Here)) {
-                for (int i = 1; i <= 100; i++) {
-                    int r = rand.nextInt(100) + 1;
-                    System.out.println(r);
-                    //wr.write(r);
-                //}
+            wr = new BufferedWriter(new FileWriter(Here));
+            for (int i = 1; i <= 100; i++) {
+                int r = rand.nextInt(100) + 1;
+
+                //System.out.println("this");
+                wr.write(r + System.getProperty("line.separator"));
+
             }
+            wr.close();
         } catch (IOException e) {
         } finally {
             System.out.println("All Done");
