@@ -14,8 +14,14 @@ public class T1P1 {
     public static void main(String[] args) {
         Random gen = new Random();
         int[][] a = new int[20][20];
+        for (int i = 0; i < a.length; i++) {
+            System.out.printf("\n");
+            for (int j = 0; j < a.length; j++) {
+                a[i][j] = gen.nextInt(100) + 1;
+                System.out.printf("%5d", a[i][j]);
+            }
+        }
 
-        // Code to fill array with random ints
-        // Code to print array row by row
+        System.out.println("");
     }
 }
